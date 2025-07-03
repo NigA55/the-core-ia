@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Core IA</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+      font-family: 'Courier New', monospace;
+      color: #00ffee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .terminal {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffee55;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 20px #00ffee22;
+    }
+
+    .line {
+      margin: 10px 0;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    .enter-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #00ffee;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffeeaa;
+    }
+
+    .enter-btn:hover {
+      background: #0ff;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0.4;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="line">[Initializing The Core IA...]</div>
+    <div class="line">> Loading protocol: OBSIDIAN-X</div>
+    <div class="line">> Neural link established</div>
+    <div class="line">> Awaiting user connection...</div>
+
+    <button class="enter-btn" onclick="enterCore()">ENTER CORE</button>
+  </div>
+
+  <script>
+    function enterCore() {
+      window.location.href = "core.html";
+    }
+  </script>
+</body>
+</html>
