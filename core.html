@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Core IA - Live</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0ff;
+      font-family: monospace;
+      padding: 30px;
+    }
+    .log-line {
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      background: #111;
+      color: #0ff;
+      border: 1px solid #0ff3;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #0ff;
+    }
+  </style>
+</head>
+<body>
+  <h2>🧠 CORE IA INTERFACE - CONNECTED</h2>
+  <div id="console">
+    <div class="log-line">[SYSTEM] Welcome, NigA55</div>
+    <div class="log-line">[AI] Ready for encrypted communication...</div>
+  </div>
+  <input type="text" placeholder="Type your message..." onkeydown="handleInput(event)" />
+
+  <script>
+    async function handleInput(e) {
+      if (e.key !== 'Enter') return;
+      const input = e.target.value.trim();
+      if (!input) return;
+
+      const consoleDiv = document.getElementById("console");
+      appendLine(`[YOU] ${input}`, consoleDiv);
+      appendLine(`[AI] Thinking...`, consoleDiv);
+
+      const reply = await askCore(input);
+      appendLine(`[AI] ${reply}`, consoleDiv);
+      e.target.value = '';
+    }
+
+    function appendLine(text, container) {
+      const line = document.createElement("div");
+      line.className = "log-line";
+      line.textContent = text;
+      container.appendChild(line);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    async function askCore(prompt) {
+      try {
+        const response = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+        const data = await response.json();
+        return data.reply || "⚠️ No response.";
+      } catch (err) {
+        return "❌ Core connection failed.";
+      }
+    }
+  </script>
+</body>
+</html>
