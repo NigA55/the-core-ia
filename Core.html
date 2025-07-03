@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CORE IA: Control Interface</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #00ffee;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      padding-top: 40px;
+    }
+
+    h1 {
+      text-shadow: 0 0 8px #0ff;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .console-box {
+      width: 90%;
+      max-width: 800px;
+      background: rgba(0, 255, 255, 0.05);
+      border: 1px solid #00ffee44;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffee22;
+      min-height: 200px;
+    }
+
+    .log-line {
+      margin-bottom: 6px;
+    }
+
+    .input-box {
+      margin-top: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      background: #111;
+      border: 1px solid #00ffee33;
+      color: #00ffee;
+      font-family: inherit;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 CORE INTERFACE UNLOCKED</h1>
+  <div class="console-box" id="console">
+    <div class="log-line">[SYSTEM] Welcome, NigA55</div>
+    <div class="log-line">[AI] I am active... waiting for your input.</div>
+  </div>
+
+  <div class="input-box">
+    <input type="text" placeholder="Type a command..." onkeydown="handleInput(event)">
+  </div>
+
+  <script>
+    function handleInput(e) {
+      if (e.key === 'Enter') {
+        const input = e.target.value.trim();
+        if (!input) return;
+
+        const consoleBox = document.getElementById('console');
+        const line = document.createElement('div');
+        line.className = 'log-line';
+        line.textContent = '[YOU] ' + input;
+        consoleBox.appendChild(line);
+
+        // ذكاء اصطناعي وهمي يرد حسب الأوامر
+        const response = document.createElement('div');
+        response.className = 'log-line';
+
+        switch (input.toLowerCase()) {
+          case 'hi':
+          case 'hello':
+            response.textContent = '[AI] Hello, NigA55. Welcome back.';
+            break;
+          case 'help':
+            response.textContent = '[AI] Try: trace, open firewall, scan system, self destruct.';
+            break;
+          case 'trace':
+            response.textContent = '[AI] Target IP traced to 102.45.9.111';
+            break;
+          case 'open firewall':
+            response.textContent = '[AI] 🔓 Firewall core opened.';
+            break;
+          case 'self destruct':
+            response.textContent = '[AI] ⚠️ Command blocked by security protocol.';
+            break;
+          default:
+            response.textContent = '[AI] Unknown command: "' + input + '"';
+        }
+
+        consoleBox.appendChild(response);
+        e.target.value = '';
+        consoleBox.scrollTop = consoleBox.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>
